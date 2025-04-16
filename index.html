@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="soon">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TwoSquared: 4D Reconstruction from 2D Image Pair</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script> -->
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="stylesheet" href="./static/css/comparison.css">
+  <!-- <link rel="icon" href="./static/images/favicon.svg"> -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          Homepage
+        </a>
+        <!-- <div class="navbar-dropdown">
+          <a class="navbar-item" href="./scannet/index.html">
+            ScanNet
+          </a>
+        </div> -->
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+<!-- authors -->
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">TwoSquared: 4D Reconstruction from 2D Image Pair</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              Lu Sang<sup>*1,2</sup>, Zehranaz Canfes<sup>*2</sup>, Dongliang Cao<sup>3</sup>, Riccardo Marin<sup>1,2</sup>, Florian Bernard<sup>3</sup>, Daniel Cremers<sup>1,2</sup>
+              <sup>1</sup>Technical University of Munich, <sup>2</sup>Munich Center of Machine Learning, <sup>3</sup>University of Bonn <br>
+              * equal contribution
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="column has-text-centered">
+  <div class="publication-links">
+    <!-- PDF Link. -->
+    <span class="link-block">
+      <a href="https://arxiv.org/pdf/"
+         class="external-link button is-normal is-rounded is-dark">
+        <span class="icon">
+            <i class="fas fa-file-pdf"></i>
+        </span>
+        <span>Paper</span>
+      </a>
+    </span>
+    <span class="link-block">
+      <a href="https://https://arxiv.org/abs/"
+         class="external-link button is-normal is-rounded is-dark">
+        <span class="icon">
+            <i class="ai ai-arxiv"></i>
+        </span>
+        <span>arXiv</span>
+      </a>
+    </span>
+    <!-- Code Link. -->
+    <span class="link-block">
+      <a href="https://github.com/Sangluisme/TwoSquared"
+         class="external-link button is-normal is-rounded is-dark">
+        <span class="icon">
+            <i class="fab fa-github"></i>
+        </span>
+        <span>Code</span>
+        </a>
+    </span>
+
+
+
+
+<!-- teaser.png -->
+<section class="here teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img id="teaser" height="100%" src="./static/images/teaser.png" alt="4Deform teaser."/>
+      <p>
+        We present <b>TwoSquared</b>, a method that takes a pair of 2D images representing the initial and final states of an object as input and generates texture-consistent, geometry-consistent 4D continuous sequences. It is designed to be robust to varying input quality, operating without the need for predefined templates or object-class priors. This adaptability enables greater flexibility in processing diverse images while maintaining structural integrity and visual coherence throughout the generated sequences. As demonstrated, our approach effectively handles humans, animals, and inanimate objects.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- pipeline.png -->
+<section class="here teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img id="teaser" height="100%" src="./static/images/pipeline.png" alt="TwoSquared pipeline."/>
+      <p>
+        <b>TwoSquared</b> processes two input images through an image-to-3D generation block, producing two 3D meshes. We then extract per-vertex features and compute a cosine similarity map, which is refined using a functional map module and a close loop check module to obtain point-to-point correspondences and a confidence map. These registered points are then fed into our shape deformation module, where we model their trajectory of the deformed point cloud. During the inference time, we can directly infer the generated textured mesh from $I_0$ to obtain the 4D sequence.
+      </p>
+    </div>
+  </div>
+</section> 
+
+
+<!-- video -->
+<hr>
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3" style="text-align: center;">Real-world Image Generated 4D sequence</h2>
+    <!-- <h2 class="title is-4"> Tiger</h2> -->
+    <div class="caption"> <span>Input Images <br> t=0 </span> <span>4D motion <br> left </span> <span>4D motion <br> front</span> <span>4D motion <br> right </span> <span> 4D motion <br> back</span>  </div>
+
+    <div style="display: flex; align-items: center; gap: 10px;">
+    <img src="./static/images/tiger1.png"  alt="Overlay Image" width="100px" style="margin-left: 50px;">
+    <video controls width="100%" height="100%" src="./static/videos/tiger1.mp4" type="video/mp4" style="margin-left: 30px;" autoplay muted loop playsinline></video>
+  </div>
+
+    <div class="caption"> <span>Input Images <br> t=1 </span> <span>3D shape <br> t=0 </span> <span>3D shape <br> t=0.2</span> <span>3D shape <br> t=0.4 </span> <span> 3D shape <br> t=0.6</span>  </div> 
+
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <img src="./static/images/tiger0.png"  alt="Overlay Image" width="100px" style="margin-left: 50px;">
+      <video controls width="100%" height="100%" src="./static/videos/tiger2.mp4" type="video/mp4" style="margin-left: 30px;" autoplay muted loop playsinline></video>
+     
+    </div>
+
+
+    <hr>
+
+
+    <div class="caption"> <span>Input Images <br> t=0 </span> <span>4D motion <br> left </span> <span>4D motion <br> front</span> <span>4D motion <br> right </span> <span> 4D motion <br> back</span>  </div>
+
+    <div style="display: flex; align-items: center; gap: 10px;">
+    <img src="./static/images/cat0.png"  alt="Overlay Image" width="70px" style="margin-left: 60px;">
+    <video controls width="100%" height="100%" src="./static/videos/cat1.mp4" type="video/mp4" style="margin-left: 30px;" autoplay muted loop playsinline></video>
+  </div>
+
+    <div class="caption"> <span>Input Images <br> t=1 </span> <span>3D shape <br> t=0 </span> <span>3D shape <br> t=0.2</span> <span>3D shape <br> t=0.4 </span> <span> 3D shape <br> t=0.6</span>  </div> 
+
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <img src="./static/images/cat1.png"  alt="Overlay Image" width="70px" style="margin-left: 60px;">
+      <video controls width="100%" height="100%" src="./static/videos/cat2.mp4" type="video/mp4" style="margin-left: 30px;" autoplay muted loop playsinline></video>
+     
+    </div>
+
+  <hr>
+
+    <div class="caption"> <span>Input Images <br> t=0 </span> <span>4D motion <br> left </span> <span>4D motion <br> front</span> <span>4D motion <br> right </span> <span> 4D motion <br> back</span>  </div>
+
+    <div style="display: flex; align-items: center; gap: 10px;">
+    <img src="./static/images/horse086.png"  alt="Overlay Image" width="100px" style="margin-left: 50px;">
+    <video controls width="100%" height="100%" src="./static/videos/horse1.mp4" type="video/mp4" style="margin-left: 30px;" autoplay muted loop playsinline></video>
+  </div>
+
+    <div class="caption"> <span>Input Images <br> t=1 </span> <span>3D shape <br> t=0 </span> <span>3D shape <br> t=0.2</span> <span>3D shape <br> t=0.4 </span> <span> 3D shape <br> t=0.6</span>  </div> 
+
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <img src="./static/images/horse088.png"  alt="Overlay Image" width="100px" style="margin-left: 50px;">
+      <video controls width="100%" height="100%" src="./static/videos/horse2.mp4" type="video/mp4" style="margin-left: 30px;" autoplay muted loop playsinline></video>
+     
+    </div>
+
+    <hr>
+
+    <div class="caption"> <span>Input Images <br> t=0 </span> <span>4D motion <br> left </span> <span>4D motion <br> front</span> <span>4D motion <br> right </span> <span> 4D motion <br> back</span>  </div>
+
+    <div style="display: flex; align-items: center; gap: 10px;">
+    <img src="./static/images/spoon1.png"  alt="Overlay Image" width="100px" style="margin-left: 50px;">
+    <video controls width="100%" height="100%" src="./static/videos/spoon1.mp4" type="video/mp4" style="margin-left: 30px;" autoplay muted loop playsinline></video>
+  </div>
+
+    <div class="caption"> <span>Input Images <br> t=1 </span> <span>3D shape <br> t=0 </span> <span>3D shape <br> t=0.2</span> <span>3D shape <br> t=0.4 </span> <span> 3D shape <br> t=0.6</span>  </div> 
+
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <img src="./static/images/spoon0.png"  alt="Overlay Image" width="100px" style="margin-left: 50px;">
+      <video controls width="100%" height="100%" src="./static/videos/spoon2.mp4" type="video/mp4" style="margin-left: 30px;" autoplay muted loop playsinline></video>
+     
+    </div>
+
+
+    <hr>
+
+
+    <div class="caption"> <span>Input Images <br> t=0 </span> <span>4D motion <br> left </span> <span>4D motion <br> front</span> <span>4D motion <br> right </span> <span> 4D motion <br> back</span>  </div>
+
+    <div style="display: flex; align-items: center; gap: 10px;">
+    <img src="./static/images/oldman1.png"  alt="Overlay Image" width="100px" style="margin-left: 50px;">
+    <video controls width="100%" height="100%" src="./static/videos/oldman1.mp4" type="video/mp4" style="margin-left: 30px;" autoplay muted loop playsinline></video>
+  </div>
+
+    <div class="caption"> <span>Input Images <br> t=1 </span> <span>3D shape <br> t=0 </span> <span>3D shape <br> t=0.2</span> <span>3D shape <br> t=0.4 </span> <span> 3D shape <br> t=0.6</span>  </div> 
+
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <img src="./static/images/oldman0.png"  alt="Overlay Image" width="100px" style="margin-left: 50px;">
+      <video controls width="100%" height="100%" src="./static/videos/oldman2.mp4" type="video/mp4" style="margin-left: 30px;" autoplay muted loop playsinline></video>
+     
+    </div>
+
+ 
+  
+
+  
+
+
+
+</body>
+</html>
